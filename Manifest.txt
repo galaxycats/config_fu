@@ -1,11 +1,8 @@
 History.txt
 Manifest.txt
-PostInstall.txt
 README.rdoc
 Rakefile
+config_fu.gemspec
 lib/config_fu.rb
-script/console
-script/destroy
-script/generate
 test/test_config_fu.rb
 test/test_helper.rb
