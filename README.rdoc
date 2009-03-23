@@ -1,15 +1,43 @@
 = config_fu
 
-* http://github.com/railsbros/config_fu
+* [http://github.com/railsbros/config_fu](http://github.com/railsbros/config_fu "railsbros's config_fu at master - GitHub")
 
 == DESCRIPTION:
 
+A very simple gem that allows environment specific configuration within a Rails application.
+
+== EXAMPLE
+
+Create a Rails initializer named 'config_fu.rb' with your custom config code:
+
+    ConfigFu::Configuration.configure do |config|
+      config.service_provider = "CentralProvider"
+      config.thumbs = 4
+      config.exception_handler = "MyExceptionHandler"
+    end
+
+    # special config for developent environment
+    ConfigFu::Configuration.configure(:development) do |config|
+    end
+
+    # special config for test environment
+    ConfigFu::Configuration.configure(:test) do |config|
+      config.service_provider = "MockProvider"
+      config.exception_handler = "MockExceptionHandler"
+    end
+
+    # special config for production environment
+    ConfigFu::Configuration.configure(:production) do |config|
+      config.service_provider = "MasterProvider"
+      config.thumbs = 10
+      config.exception_handler = "MailExceptionHandler"
+    end
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Dirk Breuer
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
