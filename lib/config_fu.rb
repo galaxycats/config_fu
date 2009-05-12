@@ -11,8 +11,9 @@ module ConfigFu
   class Configuration
     include Singleton
 
-    def self.configure(env = Rails.env)
-      return unless Rails.env == env.to_s
+    def self.configure(env = Rails.env.to_sym)
+      env = [env].flatten
+      return unless env.include?(Rails.env.to_sym)
 
       yield instance if block_given?
       ConfigFu.config = instance
@@ -26,5 +27,5 @@ module ConfigFu
     end
   end
   
-  VERSION = '0.0.2'
+  VERSION = '0.1.0'
 end

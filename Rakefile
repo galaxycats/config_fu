@@ -6,7 +6,11 @@ require File.dirname(__FILE__) + '/lib/config_fu'
 $hoe = Hoe.new('config_fu', ConfigFu::VERSION) do |p|
   p.developer('Dirk Breuer', 'dirk@railsbros.de')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+  p.post_install_message = "Run 'config_fu_init' in your Rails app directory to get your config file generated."
   p.rubyforge_name       = p.name
+  p.extra_deps = [
+    ['rubigen']
+  ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"],
     ['mocha']

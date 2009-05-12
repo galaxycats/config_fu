@@ -19,6 +19,14 @@ class TestConfigFu < Test::Unit::TestCase
     assert_equal "DevelopmentMailer", ConfigFu.config.mailer
   end
   
+  def test_should_allow_configs_for_multiple_environments
+    ConfigFu::Configuration.configure { |config| config.mailer = "MockMailer" }
+    assert_equal "MockMailer", ConfigFu.config.mailer
+    
+    ConfigFu::Configuration.configure([:development, :staging]) { |config| config.mailer = "DevelopmentMailer" }
+    assert_equal "DevelopmentMailer", ConfigFu.config.mailer
+  end
+  
   def test_should_ignore_config_if_the_current_environment_doesnt_matches_the_given_one
     ConfigFu::Configuration.configure { |config| config.mailer = "MockMailer" }
     assert_equal "MockMailer", ConfigFu.config.mailer
