@@ -1,5 +1,7 @@
 = config_fu
 
+http://github.com/railsbros/config_fu
+
 A very simple gem that allows environment specific configuration within a Rails application.
 
 Get it from Github: http://github.com/railsbros/config_fu

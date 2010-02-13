@@ -1,6 +1,6 @@
 History.txt
 Manifest.txt
-README.rdoc
+README.txt
 Rakefile
 config_fu.gemspec
 lib/config_fu.rb
