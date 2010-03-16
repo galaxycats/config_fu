@@ -35,4 +35,9 @@ class TestConfigFu < Test::Unit::TestCase
     assert_equal "MockMailer", ConfigFu.config.mailer
   end
   
+  def test_should_access_config_elements_on_top_level
+    ConfigFu::Configuration.configure { |config| config.mailer = "MockMailer" }
+    assert_equal "MockMailer", ConfigFu.mailer
+  end
+  
 end

@@ -6,6 +6,14 @@ require 'singleton'
 module ConfigFu
   class <<self
     attr_accessor :config
+    
+    def method_missing(meth, *args, &blk)
+      if config.respond_to?(meth)
+        config.send(meth)
+      else
+        raise NoMethodError, "No such config element '#{meth}' could be found."
+      end
+    end
   end
 
   class Configuration
@@ -27,5 +35,5 @@ module ConfigFu
     end
   end
   
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
 end
